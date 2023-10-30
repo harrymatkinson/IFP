@@ -30,15 +30,19 @@
     Sample screenshots from each table:
 
     bars:
+
     ![Alt text](image.png)
 
     drinks:
+
     ![Alt text](image-1.png)
 
     glasses:
+
     ![Alt text](image-2.png)
 
     transactions:
+    
     ![Alt text](image-3.png)
 
 2. Limitations and Challenges
