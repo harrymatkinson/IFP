@@ -9,19 +9,31 @@
         BAR_NAME : String, primary key
 
         BAR_STOCK : JSON
-        
+
     ii. drinks
+
         DRINK_NAME : String, primary key
+
         GLASS_NAME : String, foreign key (glasses.GLASS_NAME)
+
     iii. glasses
+
         GLASS_NAME : String, primary key
+
         STOCK : Integer
+
     iv. transactions
+
         TRANS_ID : Integer, primary key
+
         BAR_NAME : String, foreign key (bars.BAR_NAME)
+
         DRINK_NAME : String, foreign key (drinks.DRINK_NAME)
+
         VALUE : Float
+
         TRANS_TIME : DateTime (with timezone)
+
 
     The JSON in bars.BAR_STOCK is composed of a dictionary that holds stock for each glass type for that particular bar. For example, London may have "{'BALLOON_GLASS': 34, 'BEER_GLASS': 41, 'BEER_MUG': 42, ...}" as its BAR_STOCK. An alternate way to store this data in the bars table would be to have a separate stock column for every glass type that we encounter.
 
@@ -58,10 +70,18 @@
 3. Solution Overview
 
     models.py : Stores the sqlalchemy classes for each of our DB tables, also calls declarative_base() so we can inherit this into each DB table class.
+
     sql_functions.py : Stores most of the sqlalchemy functionality, including the upsert_df() function and the engine. This script should be run once to create all tables (line 88).
+
     file_functions.py : Stores functions related to moving/copying files and listing all files within a specific path.
+
     api_functions.py : Stores functions that use TheCocktailDB API.
+
     copy_files.py : Copies the raw files from a source directory to a queue directory.
+
     parse_files.py : Loads the data from the raw files stored in the queue into dataframes, one for each table. These dataframes are then passed into upsert_df() to upsert the data to the DB. This script should be scheduled to run frequently as per the DB update frequency requirements.
+
     local.ini : Config file that contains 3 parameters: RAW_DIR (where the raw files are initially coming from), QUEUE_DIR (where the raw files are processed), DEBUG (turn this on to disable file deletion and DB updates).
+
     unit_tests.py : Runs unit tests for functions defined elsewhere. I only had time to implement this for the format_stock() function (parse_files.py, lines 79-84).
+    
