@@ -3,9 +3,13 @@
     I used the free tier of AWS to create my PostgreSQL database. This was chosen out of convenience within the time constraints - I'm sure there are other options that would be better suited for this. I've also put the AWS instance username and password into my scripts to connect (sql_functions.py), again out of convenience. This is obviously not ideal for a production environment.
 
     I created 4 tables for the DB, these are as follows with their columns:
+
     i. bars
+
         BAR_NAME : String, primary key
+
         BAR_STOCK : JSON
+        
     ii. drinks
         DRINK_NAME : String, primary key
         GLASS_NAME : String, foreign key (glasses.GLASS_NAME)
@@ -42,7 +46,7 @@
     ![Alt text](image-2.png)
 
     transactions:
-    
+
     ![Alt text](image-3.png)
 
 2. Limitations and Challenges
