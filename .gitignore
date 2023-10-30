@@ -1,6 +1,11 @@
-# ignore all .log files
-*.log
+# ignore all files with the below extensions
+*.jar
+*.zip
 
 # ignore all files in the below directories
 .venv/
+.vscode/
+analytics-engineer-assessment-2-/
 env/
+temp/
+Workbench-Build129-with-optional-libs/
